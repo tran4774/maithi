@@ -80,23 +80,25 @@ void timmin(int a[][SIZE], int d, int c)
 
 int maxchan(int a[][SIZE], int m, int n)
 {
-	int i, j, max;
-	for (i = 0; i < m; i++)
+	int i, j;
+	int max = 0;
+	for (i = 0; i < m; i++) 
+	{
+		bool test = false;
 		for (j = 0; j < n; j++)
 		{
-			max = 0;
 			if (a[i][j] % 2 == 0)
 			{
-
 				max = a[i][j];
-
-				for (i = 0; i < m; i++)
-					for (j = 0; j < n; j++)
-						if (a[i][j] % 2 == 0 && a[i][j] > max)
-							max = a[i][j];
+				test = true;
 			}
-
 		}
+		if (test == true) break;
+	}
+	for (i = 0; i < m; i++)
+		for (j = 0; j < n; j++)
+			if (a[i][j] % 2 == 0 && a[i][j] > max)
+				max = a[i][j];
 
 	if (max == 0) return -1; //ko co so chan trong mang
 
