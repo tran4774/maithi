@@ -58,7 +58,7 @@ bool ktmatrandonvi(int a[][SIZE], int n)
 bool ktmatrantamgiactren(int a[][SIZE], int n)
 {
 	for (int i = 1; i < n-1; i++)
-		for (int j = i-1; j <= i; j++)
+		for (int j = 0; j < i; j++)
 			if (a[i][j] != 0) return false;
 
 	return true;
