@@ -73,19 +73,11 @@ bool ktmatrantamgiactren(int a[][SIZE], int n)
 
 bool ktmatrantamgiacduoi(int a[][SIZE], int n)
 {
-	int dem = 0;
-	int check = 0;
-	int temp = 0;
-
-	for (int i = 0; i < n; i++)
-		check += i;
-
 	for (int i = 1; i < n; i++)
 		for (int j = 0; j < i; j++)
-			if (a[j][i] == 0) temp++;
+			if (a[j][i] != 0) return false;
 	
-	if (temp == check) return true;
-	else return false;
+	return true;
 }
 
 bool ktmatrandoixung(int a[][SIZE], int n)
