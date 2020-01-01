@@ -85,25 +85,16 @@ bool ktmatrantamgiactren(int a[][MAX], int n)
 
 }
 //6. Hàm kiểm tra ma trận tam giác dưới
-bool ktmatrantamgiacduoi(int a[][MAX], int n)
+
+bool ktmatrantamgiacduoi(int a[][SIZE], int n)
 {
-	int dem = 0;
-	int check = 0;
-	int temp = 0;
-
-	for (int i = 0; i < n; i++)
-		check += i;
-
 	for (int i = 1; i < n; i++)
 		for (int j = 0; j < i; j++)
-		{
-			if (a[i][i] == 0) return false;
-			if (a[i][j] != 0) dem++;
-			if (a[j][i] == 0) temp++;
-		}
-	if (dem > 0 && temp == check) return true;
-	else return false;
+			if (a[j][i] != 0) return false;
+	
+	return true;
 }
+
 //7. Hàm kiểm tra ma trận đối xứng
 bool ktmatrandoixung(int a[][MAX], int n)
 {
