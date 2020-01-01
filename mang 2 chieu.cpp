@@ -205,7 +205,7 @@ void sxcottangdan(int a[][SIZE], int d, int c, int k)
 	inmatran(a, d, c);
 }
 
-void sxmttang(int a[][SIZE], int d, int c)
+void sxmttang(int a[][SIZE], int d, int c)     // bài này sai r nha :v
 {
 	int i, j;
 	for (i = 0; i < d; i++)
