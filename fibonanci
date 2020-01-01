@@ -1,0 +1,16 @@
+. ktra fibo
+void fibo() {
+	a[0] = 1;
+	a[1] = 1;
+	for (int i = 2; i < 100; i++) a[i] = a[i - 1] + a[i - 2];
+}
+bool checkfibo(int n) {
+	fibo();
+	int i = 0;
+	while (a[i] <= n) {
+		i++;
+		if (a[i] == n)
+			return true;
+	}
+	return false;
+}
