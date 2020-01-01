@@ -233,7 +233,27 @@ void sxmttang(int a[][SIZE], int d, int c)     // bài này sai r nha :v
 	inmatran(a, d, c);
 
 }
-
+//. sắp xếp ma trận tăng dần từ trái sang phải từ trên xuống dưới
+void sapxepmt(int a[][MAX], int d, int c)
+{
+	int t;
+	for (int i = 0; i < d; i++)
+		for (int j = 0; j < c; j++)
+			for (int k = j + 1; k < c; k++)
+			if (a[i][j] > a[i][k]) {		
+				t = a[i][j];
+				a[i][j]= a[i][k];
+				a[i][k] = t;
+			}
+	for (int j = 0; j < c; j++)
+		for (int i = 0; i < d; i++)
+			for (int k = i + 1; k < d; k++)
+			if (a[i][j] > a[k][j]) {
+				t = a[i][j];
+				a[i][j] = a[k][j];
+				a[k][j] = t;
+			}
+}
 void cong2matran(int a[][SIZE], int b[][SIZE], int x[][SIZE], int d, int c)
 {
 	for (int i = 0; i < d; i++)
@@ -288,7 +308,64 @@ int tinhtongcacptubien(int a[][SIZE], int d, int c)
 
 	return s;
 }
-
+//. kiểm tra ma trận đơn vị
+bool check(int a[][MAX], int d, int c)
+{
+	int dem = 1;
+	for (int i = 0; i < d; i++) {
+		for (int j = 0; j < c; j++) {
+			if ((i != j && a[i][j] != 0) || (i == j && a[i][j] != 1))
+			{
+				dem = 0;
+				i = d;
+				break;
+			}
+		}
+	}
+	if (dem == 0)
+		return false;
+	return true;
+}
+//. Kiểm tra ma trận có phải tam giác trên không
+bool ktratgtren(int a[][MAX], int d, int c)
+{
+	int check = 1;
+	for (int i = 0; i < d; i++) 
+		for (int j = 0; j < c; j++) 
+			if (i > j && a[i][j] != 0)
+			{
+				check = 0;
+				i = d;
+				break;
+			}
+	if (check == 0)
+		return false;
+	return true;
+}
+//. Kiểm tra ma trận đối xứng
+bool ktradoixung(int a[][MAX])
+{
+	int n;
+	cout << "Nhap cap ma tran: ";
+	cin >> n;
+	Nhap(a, n, n);
+	int b[MAX][MAX];
+	int check = 1;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			b[j][i] = a[i][j];
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			if (b[i][j] != b[j][i])
+			{
+				check = 0;
+				i = n;
+				break;
+			}
+	if (check == 0)
+		return false;
+	return true;
+}
 int main()
 {
 	int m[SIZE][SIZE];
