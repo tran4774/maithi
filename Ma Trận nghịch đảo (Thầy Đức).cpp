@@ -127,4 +127,19 @@ void nghichdao(float a[][100], int n)
 	if (k == 0) cout << "\nkhong co ma tran nghich dao!";
 	else xuat(b, n);
 }
-
+//hàm phân rã LU
+void PhanRaLU(float A[max][max], float L[max][max], float U[max][max], int n) {
+	for (int k = 0; k < n; k++) {
+		U[k][k] = A[k][k];
+		L[k][k] = 1;
+		for (int i = k + 1; i < n; i++) {
+			L[i][k] = A[i][k] / U[k][k];
+			U[k][i] = A[k][i];
+			U[i][k] = 0;
+			L[k][i] = 0;
+		}
+		for (int i = k + 1; i < n; i++)
+			for (int j = k + 1; j < n; j++)
+				A[i][j] = A[i][j] - L[i][k] * U[k][j];
+	}
+}
