@@ -80,32 +80,37 @@ void timmin(int a[][SIZE], int d, int c)
 
 int maxchan(int a[][SIZE], int m, int n)
 {
-	int dem = 0;
-	int i, j;
-	int max;
-	for (i = 0; i < m; i++) 
-	{
-		bool test = false;
-		for (j = 0; j < n; j++)
-		{
-			if (a[i][j] % 2 == 0)
-			{
-				max = a[i][j];
-				dem++;
-				test = true;
-				break;
-			}
-		}
-		if (test == true) break;
-	}
-	for (i = 0; i < m; i++)
-		for (j = 0; j < n; j++)
-			if (a[i][j] % 2 == 0 && a[i][j] > max)
-				max = a[i][j];
+// 	int dem = 0;
+// 	int i, j;
+// 	int max;
+// 	for (i = 0; i < m; i++) 
+// 	{
+// 		bool test = false;
+// 		for (j = 0; j < n; j++)
+// 		{
+// 			if (a[i][j] % 2 == 0)
+// 			{
+// 				max = a[i][j];
+// 				dem++;
+// 				test = true;
+// 				break;
+// 			}
+// 		}
+// 		if (test == true) break;
+// 	}
+// 	for (i = 0; i < m; i++)
+// 		for (j = 0; j < n; j++)
+// 			if (a[i][j] % 2 == 0 && a[i][j] > max)
+// 				max = a[i][j];
 
-	if (dem == 0) return -1; //ko co so chan trong mang
+// 	if (dem == 0) return -1; //ko co so chan trong mang
 
-	return max;
+// 	return max;
+	int Max=INT_MIN;
+		for (int i=0;i<m;i++)
+			for (int j=0;j<n;j++)
+				if (a[i][j]%2==0 && Max<a[i][j]) Max=a[i][j];
+	return (a[i][j]>0) ? a[i][j] : -1;
 }
 
 int minle(int a[][SIZE], int m, int n)
