@@ -75,7 +75,7 @@ void chuanhoachuoi(char str[])
 	
 	cout << "Mang sau khi chuan hoa: " << str << endl;
 }
-
+// đếm số lần xuất hiện của ký tự
 int demlanxuathien(char s[], char x)
 {
 	int dem = 0;
@@ -97,7 +97,7 @@ int demsotu(char s[])
 	}
 	return sotu;
 }
-
+// in hoa chữ đầu mỗi từ và in thường các chữ còn lại
 void inhoachudauinthuongcacchuconlai(char s[])
 {
 
@@ -142,7 +142,7 @@ int demnguyenam(char s[])
 
 	return dem;
 }
-
+// đếm nguyên âm phân biệt
 int demnguyenamphanbiet(char s[])
 {
 	int dem = 0;		
@@ -180,7 +180,7 @@ bool checkchuoitoanso(char s[])
 	}
 	return true;
 }
-
+// kiểm tra xem chuỗi có biểu diễn cho hệ thập lục phân hay ko
 bool ktthaplucphan(char s[])
 {
 	if (strlen(s) == 0) return false;
@@ -304,7 +304,7 @@ int demsolanxuathiencuachuoicon(char s[], char s1[])
 
 
 
-
+// tìm và in ra từ dài nhất chuỗi
 void TuDaiNhat(char s[]) 
 {
 	int i;
