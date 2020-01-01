@@ -91,6 +91,7 @@ int maxchan(int a[][SIZE], int m, int n)
 			{
 				max = a[i][j];
 				test = true;
+				break;
 			}
 		}
 		if (test == true) break;
