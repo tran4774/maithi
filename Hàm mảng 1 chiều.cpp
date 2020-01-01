@@ -5,23 +5,40 @@
 #include<stdlib.h>
 #include<iostream>
 using namespace std;
-//1. Nhập mảng
+//.1 Nhập mảng
 void NhapMang(int a[], int n);
-//2.Xuất mảng
+//.2 Xuất mảng
 void XuatMang(int a[], int n);
-//3.Tính tổng các số nguyên tố trong mảng
+//.3 Tính tổng các số nguyên tố trong mảng
 int TongSNT(int a[], int n);
-//4. Kiểm tra xem các số chẵn trong mảng có tăng dần không
+//.4 Kiểm tra xem các số chẵn trong mảng có tăng dần không
 void KTratongmang(int a[], int n);
-//5. Sắp xếp mảng sao cho các số chẵn tăng dần, số lẻ giảm dần
+//.5 Sắp xếp mảng sao cho các số chẵn về đầu mảng, các số lẻ ở cuối mảng
+void Sapxepchanle(int a[], int n);
+//.6 Sắp xếp mảng sao cho các số chẵn tăng dần, số lẻ giảm dần
 void sapxepchantangdan(int a[], int n);
 void sapxeplegiamdan(int a[], int n);
-//6. Xóa phần tử tại vị trí k trong mảng
+//.7 Xóa phần tử đầu tiên bằng x trong mảng 
+void Xoapt(int a[], int& n)
+//.8 Xóa phần tử tại vị trí k trong mảng
 void xoak(int c[], int &n);
-//7. Xóa tất cả các số nguyên tố ra khỏi mảng
+//.9 Xóa tất cả các số nguyên tố ra khỏi mảng
 void xoanguyento(int d[], int& n);
-//8.Xóa tất cả các phần tử trùng nhau
+//.10 Xóa tất cả các phần tử trùng nhau
 void xoaphantutrungnhau(int e[], int& n);
+//.11 Hàm xóa tất cả các phần tử có giá trị thuộc đoạn [x,y] cho trước. Hàm trả về số phần tử bị xóa
+int xoadoan(int a[], int& n, int x, int y);
+//.12 Hàm chèn 1 số nguyên x vào vị trí k trong mảng k cho trước (0<=k<=n)
+void chen1sok(int a[], int n);
+//.13 Hàm chèn giá trị x vào mảng tăng dần, sao cho mảng có kết quả vẫn có thứ tự tăng
+void chenx(int a[], int& n, int x);
+//.14 Hàm tách mảng a thành 2 mảng con mc và ml. Mảng mc chứa số chẵn, mảng ml chứa số lẻ
+void tach(int a[], int n);
+//.15 Hàm trộn 2 mảng a, b có thứ tự tăng thành mảng c cũng có thứ tự tăng
+void Tron(int a[], int n, int b[], int m);
+//.16 Hàm kiểm tra giá trị có trùng hay không, nếu có thì nhập lại đến khi nào không trùng nữa mới thôi
+bool kiemtra(int a[], int n, int gtri);
+void nhap(int a[], int& n);
 
 
 
@@ -48,6 +65,7 @@ int main()
 	} while (_getch() != 27);
 	return 0;
 }
+
 
 
 
@@ -119,7 +137,19 @@ void KTratongmang(int a[], int n)
 	if (dem > 0) cout << "Cac so chan trong KHONG mang tang dan \n";
 	else cout << "Cac so chan trong mang tang dan \n";
 }
-//5. Sắp xếp mảng sao cho các số chẵn tăng dần, số lẻ giảm dần
+//5. Sắp xếp mảng sao cho các số chẵn về đầu mảng, các số lẻ ở cuối mảng
+void Sapxepchanle(int a[], int n)
+{
+		for (int i = 0; i < n - 1; i++)		//bước i: so sánh vị trí i với các vị trí sau nó
+			for (int j = i + 1; j < n; j++)	//j là những vị trí sau i
+				if (a[i] % 2 != 0 && a[j] % 2 == 0) //nếu có nghịch thế  3 6 8 5 4 7
+				{
+					int t = a[i];	//thì đổi chỗ
+					a[i] = a[j];
+					a[j] = t;
+				}
+}
+//6. Sắp xếp mảng sao cho các số chẵn tăng dần, số lẻ giảm dần
 void sapxepchantangdan(int a[], int n)
 {
 	int t;
@@ -160,8 +190,21 @@ void sapxeplegiamdan(int a[], int n)
 		cout << a[i] << " ";
 	cout << endl;
 }
-
-//6. Xóa phần tử tại vị trí k trong mảng
+//.7 Xóa phần tử đầu tiên bằng x trong mảng 
+void Xoapt(int a[], int& n)
+{
+	int x;
+	cout << "\nNhap 1 so nguyen: "; cin >> x;		//số cần xóa
+	int k = 0;
+	while (k < n && a[k] != x) k++;
+	if (k < n)
+	{
+		for (int i = k + 1; i < n; i++)		//dồn các vị trí sau k lên 1
+			a[i - 1] = a[i];
+		n--;
+	}
+}	
+//8. Xóa phần tử tại vị trí k trong mảng
 void xoak(int c[], int& n)
 {
 
@@ -177,7 +220,7 @@ void xoak(int c[], int& n)
 		cout << c[i] << " ";
 	cout << endl;
 }
-//7. Xóa tất cả các số nguyên tố ra khỏi mảng
+//9. Xóa tất cả các số nguyên tố ra khỏi mảng
 void xoanguyento(int d[], int& n)
 {
 	for (int i = 0; i < n; i++)
@@ -201,7 +244,7 @@ void xoaphantu(int e[], int &n, int k)                                     //k l
 		e[i - 1] = e[i];
 	n--;
 }             
-//8.Xóa tất cả các phần tử trùng nhau
+//10.Xóa tất cả các phần tử trùng nhau
 void xoaphantutrungnhau(int e[], int &n)
 {
 	for (int i = 0; i < n-1; i++)
@@ -219,4 +262,114 @@ void xoaphantutrungnhau(int e[], int &n)
 	for (int i = 0; i < n; i++)
 		cout << e[i] << " ";
 	cout << endl;
+}
+//11. Hàm xóa tất cả các phần tử có giá trị thuộc đoạn [x,y] cho trước. Hàm trả về số phần tử bị xóa
+int xoadoan(int a[], int& n, int x, int y)
+{
+	int dem = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] >= x && a[i] <= y)
+		{
+			Xoa(a, n, i);
+			i--;
+			dem++;
+		}
+	}
+	return dem;
+}
+//12. Hàm chèn 1 số nguyên x vào vị trí k trong mảng k cho trước (0<=k<=n)
+void chen1sok(int a[], int n)
+{
+	int k, x;
+	cout << "nhap vi tri can chen k:";
+		cin >> k;
+		cout << " nhap so can chen:"; cin >> x;
+	int i;
+	for (i = n; i > k; i--) {
+		a[i] = a[i - 1];
+	}
+	a[k] = x;
+}
+//13. Hàm chèn giá trị x vào mảng tăng dần, sao cho mảng có kết quả vẫn có thứ tự tăng
+void chenx(int a[], int& n, int x)
+{
+	int i = 0;
+	int j;
+	while (i < n && !(x > a[i] && x < a[i + 1]))	// 2 4 6 8 
+		i++;										// 2 4 6 6 8
+	if (i < n)
+	{
+		n++;
+		for (j = n; j > i; j--)
+			a[j] = a[j - 1];
+		a[j + 1] = x;
+	}
+}
+//14. Hàm tách mảng a thành 2 mảng con mc và ml. Mảng mc chứa số chẵn, mảng ml chứa số lẻ
+void tach(int a[], int n)
+{
+	int i, c = 0, l = 0;
+	int mc[100], ml[100];
+	for (i = 0; i < n; i++)
+	{
+		if (a[i] % 2 == 0) 
+		{
+			mc[c] = a[i];
+			c++;
+		}
+		else 
+		{
+			ml[l] = a[i];
+			l++;
+		}
+	}
+}
+//15. Hàm trộn 2 mảng a, b có thứ tự tăng thành mảng c cũng có thứ tự tăng
+void Tron(int a[], int n, int b[], int m)
+{
+	int c[100], k = 0;
+	for (int i = 0; i < n; i++)
+	{
+		c[k] = a[i];
+		k++;
+	}
+	for (int i = 0; i < m; i++)
+	{
+		c[k] = b[i];
+		k++;
+	}
+}
+//16. Hàm kiểm tra giá trị có trùng hay không, nếu có thì nhập lại đến khi nào không trùng nữa mới thôi
+bool kiemtra(int a[], int n, int gtri)
+{
+	int i;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] == gtri)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+void nhap(int a[], int& n)
+{
+	cout << "Nhap so luong phan tu:  ";
+	cin >> n;
+	int gtri1, i = 0;
+	for (i = 0; i < n; i++)
+	{
+		cout << "Nhap phan tu thu #" << i << " : ";		//0 1 2 3 4
+		cin >> gtri1;
+	}
+		if (kiemtra(a, i, gtri1) == true)
+		{
+				cout << "Gia tri bi trung vui long nhap lai" << endl;
+				i--;
+		}
+		else
+		{
+				a[i] = gtri1;
+		}
 }
