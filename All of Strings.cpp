@@ -173,6 +173,25 @@ void demtu2na(char str[]) {
 	}
 	cout << "So tu co chua it nhat hai nguyen am dung canh nhau trong mang la: " << dem2 << endl;
 }
+//23. Hàm tính trung bình cộng(hoặc tổng) các số nguyên trong CHUỖI
+double tbctrongchuoi(char str[]) {
+	int len = strlen(str);
+	int i = len - 1;
+	int tong = 0, num = 0, dem = 0;			//Tính tổng thì bỏ biến dem
+	while (i >= 0) {
+		while (i >= 0 && !isdigit(str[i])) i--;
+		num = 0;
+		int hang = 1;
+		while (i >= 0 && isdigit(str[i])) {
+			num += hang * (str[i] - 48);
+			hang *= 10;
+			i--;
+		}
+		tong += num;
+		dem++;                              //Tính tổng thì bỏ dòng này
+	}
+	return (double)tong / (double)dem;      //Tính tổng thì return tong;
+}
 
 int main()
 {
@@ -274,7 +293,8 @@ int main()
 		//22. Hàm strrchr:  trả về địa chỉ vị trí xuất hiện cuối cùng của kí tự ch trong chuỗi s.Nếu không tìm thấy hàm sẽ trả về giá trị NULL
 		char* strrchr(char* s, char ch);
 
-		
+		//23. Hàm tính trung bình cộng(hoặc tổng) các số nguyên trong CHUỖI
+		cout << "Trung binh cong cac so nguyen trong chuoi la: " << tbctrongchuoi(str) << endl;
 
 		cout << "Nhan ESC de thoat...\n";
 	} while (_getch() != 27);
