@@ -47,7 +47,7 @@ int tinhtongcotle(int a[][MAX], int d, int c)
 		if (a[i][c] % 2 != 0) dem += a[i][c];
 	return dem;
 }
-void tinhmaxcotle(int a[][MAX], int d, int c)
+void timmaxcotle(int a[][MAX], int d, int c)
 {
 	int max = tinhtongcotle(a, d, 0);
 	for (int j = 1; j < c; j++)
@@ -68,7 +68,7 @@ int main()
 		cout << "Nhap so cot cua ma tran (c<100): "; cin >> c;
 		NhapMaTran(M, d, c);
 		InMaTran(M, d, c);
-		tinhmaxcotle(M, d, c);
+		timmaxcotle(M, d, c);
 
 
 
