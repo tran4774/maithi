@@ -59,19 +59,15 @@ bool ktmatrantamgiactren(int a[][SIZE], int n)
 {
 	int dem = 0;
 	int check = 0;
-	int temp = 0;
 
 	for (int i = 0; i < n; i++)
 		check += i;
 	
 	for (int i = 1; i < n; i++)
 		for (int j = 0; j < i; j++)
-		{
-			if (a[i][i] == 0) return false;
 			if (a[i][j] == 0) dem++;
-			if (a[j][i] != 0) temp++;
-		}
-	if (dem == check && temp > 0) return true;
+		
+	if (dem == check) return true;
 	else return false;
 }
 
@@ -86,12 +82,9 @@ bool ktmatrantamgiacduoi(int a[][SIZE], int n)
 
 	for (int i = 1; i < n; i++)
 		for (int j = 0; j < i; j++)
-		{
-			if (a[i][i] == 0) return false;
-			if (a[i][j] != 0) dem++;
 			if (a[j][i] == 0) temp++;
-		}
-	if (dem > 0 && temp == check) return true;
+	
+	if (temp == check) return true;
 	else return false;
 }
 
