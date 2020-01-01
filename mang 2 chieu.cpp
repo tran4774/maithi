@@ -366,6 +366,51 @@ bool ktradoixung(int a[][MAX])
 		return false;
 	return true;
 }
+//15. Tìm max của các phần tử trên đường chéo chính
+int maxcheochinh(int a[][MAX], int n)		// n: cấp ma trận
+{
+	int max = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+		{
+			if (i == j && a[i][j] > max)
+				max = a[i][j];
+		}
+	return max;
+}
+//16. Tạo ma trận xoắn ốc cấp n
+void khoi_tao_ma_tran_xoan_oc(int& m, int a[100][100])
+{
+	int n, vong,i;
+	int giatri = m * m;
+	n = m;
+	while (vong <= m / 2)
+	{
+		for (i = vong; i < n; i++)
+		{
+			a[i][vong] = giatri;
+			giatri--;
+		}
+		for (i = vong + 1; i < n; i++)
+		{
+			a[n - 1][i] = giatri;
+			giatri--;
+		}
+		for (i = n - 2; i >= vong; i--)
+		{
+			a[i][n - 1] = giatri;
+			giatri--;
+		}
+		for (i = n - 2; i > vong; i--)
+		{
+			a[vong][i] = giatri;
+			giatri--;
+		}
+		vong++;
+		n--;
+	}
+}
+
 int main()
 {
 	int m[SIZE][SIZE];
