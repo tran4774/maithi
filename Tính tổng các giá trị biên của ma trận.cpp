@@ -39,7 +39,7 @@ int main()
 			cout << endl;
 		}
 
-
+		//tính tổng cạnh trên và cạnh dưới của ma trận vuông
 		for (j = 0; j < n; j++)
 		{
 			if (a[0][j] % 2 == 0)
@@ -52,6 +52,7 @@ int main()
 			}
 		}
 		
+		//tính tổng cạnh trái và cạnh phải của ma trận vuông (i chạy từ 1->n-1 để tránh cộng 4 góc 2 lần) 
 		for (i = 1; i < n - 1; i++)
 		{
 			if (a[i][0] % 2 == 0)
