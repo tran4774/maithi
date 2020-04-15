@@ -16,7 +16,7 @@ void nhapmang(int a[], int n)
 	}
 }
 
-//2. Hàm nhập mảng 1D
+//2. Hàm in mảng 1D
 void inmang(int a[], int n)
 {
 	cout << "Mang vua nhap la:\n";
@@ -54,16 +54,16 @@ void tongcp(int a[], int n)
 	cout << "Tong cac so chinh phuong trong mang = " << tong << endl;
 }
 //Hàm kiểm tra số nguyên tố
-bool ktnguyento(int x)
-{
+bool checkPrime(int x) {
 	if (x < 2) return false;
-	else if (x > 2)
-	{
-		if (x % 2 == 0) return false;
-		else
-		{
-			for (int i = 3; i < x; i++)
-				if (x % i == 0) return false;
+	else if (x > 2) {
+		if (x % 2 == 0) 
+			return false;
+		else {
+			int t = sqrt(x);
+			for (int i = 3; i <= t; i+=2)
+				if (x % i == 0) 
+					return false;
 		}
 	}
 	return true;
